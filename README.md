@@ -10,4 +10,4 @@
 
 ## Here's the demo Screenshot
 
-[pic1](https://github.com/shadmanshaikh/segafin/blob/main/public/photos/invoice.png)
+![Demopicture1](https://github.com/shadmanshaikh/segafin/blob/main/public/photos/invoice.png)
