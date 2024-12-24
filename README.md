@@ -8,3 +8,6 @@
 4. Invoice [ sales & purchase ]
 5. Receipts
 
+## Here's the demo Screenshot
+
+[pic1](https://github.com/shadmanshaikh/segafin/blob/main/public/photos/invoice.png)
