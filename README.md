@@ -11,3 +11,9 @@
 ## Here's the demo Screenshot
 
 ![Demopicture1](https://github.com/shadmanshaikh/segafin/blob/main/public/photos/invoice.png)
+
+![Demopicture2](https://github.com/shadmanshaikh/segafin/blob/main/public/photos/ss.png)
+
+![Demopicture3](https://github.com/shadmanshaikh/segafin/blob/main/public/photos/soa.png)
+
+![Demopicture4](https://github.com/shadmanshaikh/segafin/blob/main/public/photos/makeinvoice.png)
