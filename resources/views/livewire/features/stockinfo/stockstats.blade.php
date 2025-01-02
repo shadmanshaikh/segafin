@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Schema;
 use Mary\Traits\Toast;
 new class extends Component {
     use Toast;
-
+    public $name , $code;
     public string $search = '';
-
+    public bool $addProductDrawer = false;
     public bool $drawer = false;
     public bool $addStockDrawer = false;
     public $invoice_number;
@@ -34,7 +34,6 @@ new class extends Component {
     {
         
         return [
-            ['key' => 'id', 'label' => '#', 'class' => 'w-1 font-bold'],
             ['key' => 'name', 'label' => 'Name', 'class' => 'w-1 font-bold'],
             ['key' => 'purchaseqty', 'label' => 'Purchase Qty'],
             ['key' => 'salesqty', 'label' => 'Sale Qty'],
@@ -63,7 +62,23 @@ new class extends Component {
                 });
             });
     }
-    
+    public function saveStock()
+    {
+        Stocks::create([
+            'name' => $this->name,
+            'itemcode' => $this->code,
+            'purchaseqty' => 0,
+            'salesqty' => 0, 
+            'balanceqty' => 0,
+            'totalpurchaseamount' => 0,
+            'avgpurchaseprice' => 0,
+            'stockvalue' => 0
+        ]);
+
+        $this->addProductDrawer = false;
+        $this->name = '';
+        $this->success('Stock added successfully');
+    }
     public function getuser($id){
         $finder = User::find($id);
         dd($id);
@@ -88,6 +103,21 @@ new class extends Component {
 </x-header>
 
 <!-- add Stock Drawer -->
+ <div class="flex justify-end">
+    <x-button icon="o-plus" class="btn-sm btn-primary mb-3" label="Add product" wire:click="$toggle('addProductDrawer')" />
+ </div>
+<x-drawer wire:model="addProductDrawer" title="Add Stock" right separator with-close-button class="lg:w-1/3">
+    <x-form wire:submit.prevent="saveStock">
+        <div class="space-y-4">
+            <x-input label="Product Code" wire:model="code" placeholder="Enter product code" />
+            <x-input label="Product Name" wire:model="name" placeholder="Enter product name" />
+        </div>
+        <x-slot:actions>
+            <x-button label="Cancel" icon="o-x-mark" wire:click="$set('addProducts', false)" />
+            <x-button type="submit" label="Save" icon="o-check" class="btn-primary" spinner />
+        </x-slot:actions>
+    </x-form>
+</x-drawer>
 <!--  -->
     <x-card>
         <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy">

@@ -53,40 +53,7 @@ class MakeInvoice extends Component
             $this->totalamount += (float) ($product['amount'] ?? 0);  // Convert to float to ensure decimal handling
         }
 
-        foreach ($this->products as $product) {
             
-            $stock = Stocks::where('name', $product['product'])->first();
-            if ($stock) {
-                dd(true);
-                // $stock->purchaseqty += $product['quantity'];
-                // $stock->totalpurchaseamount += $product['amount'];
-                // $stock->save();
-            }else{
-                dd(false);
-            }
-        }
-      
-        // invoicedb::create([
-        //     'invoicenumber' => $this->invoiceNumber ,
-        //     'contractperiod' => $this->contractPeriod ,
-        //     'customername' => $this->customerName ,
-        //     'address' => $this->address ,
-        //     'typeps' => $typeOfPS,
-        //     'doi' => $this->doi ,
-        //     'data' => $this->products,
-        //     'totalamount' => $this->totalamount
-        // ]);
-
-        // soadb::create([
-        //     'date' => $this->doi,
-        //     'invoicenumber' => $this->invoiceNumber,
-        //     'data' => $this->products,
-        //     'customer_name' => $this->customerName,
-        //     'totalamount' => $this->totalamount,
-        //     'typeps' =>  $this->typePS
-        // ]);
-
-
 
         $this->products = [];
         $this->totalamount = 0;
